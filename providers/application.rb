@@ -107,7 +107,7 @@ action :startup do
   Chef::Log.info "Start or gracefully reload pm2 application #{new_resource.name}"
 
   # Set startup based on platform
-  cmd = "pm2 startup #{node['platform']}"
+  cmd = "pm2 startup #{node['pm2']['startup_type']}"
   # Add the user option if doing it as a different user
   cmd << " -u #{new_resource.user}"
   execute cmd do
